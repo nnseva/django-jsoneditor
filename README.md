@@ -1,10 +1,10 @@
-# JSONInput
+# JSONEditor
 
-JSONInput is an online structured JSON input widget appropriate for various JSONField's provided for Django.
+JSONEditor is an online structured JSON input widget for Django appropriate for various JSONField's provided for Django.
 
-Code of the online editor has been got from the http://jsoneditoronline.org/ but slightly changed to avoid some issues.
+Code of the javascript JSONEditor online editor has been got from the http://jsoneditoronline.org/ but slightly changed to avoid some issues.
 
-See the latest versions of the JSON Editor here: https://github.com/josdejong/jsoneditor
+See the latest versions of the JSON Editor javascript here: https://github.com/josdejong/jsoneditor
 
 Don't mismatch this repo with https://github.com/bradjasper/django-jsonfield
 
@@ -14,4 +14,3 @@ pip install "git+git:github.com/nnseva/django-jsoneditor"
 
 ## Use
 
-TODO
