@@ -7,12 +7,19 @@ from django.conf import settings
 
 class JSONEditor(Textarea):
     class Media:
-        js = ( getattr(settings,"JSON_EDITOR_JS",settings.STATIC_URL+'jsoneditor/jsoneditor.js'), )
+        js = (
+            getattr(settings,"JSON_EDITOR_JS",settings.STATIC_URL+'jsoneditor/jsoneditor.js'),
+            getattr(settings,"JSON_EDITOR_JS",settings.STATIC_URL+'django-jsoneditor/django-jsoneditor.js'),
+        )
         css= {'all': ( getattr(settings, "JSON_EDITOR_CSS",settings.STATIC_URL+'jsoneditor/jsoneditor.css'),)}
 
     def render(self, name, value, attrs=None):
         input_attrs = {'hidden':True}
         input_attrs.update(attrs)
+        if not 'class' in input_attrs:
+            input_attrs['class'] = 'for_jsoneditor'
+        else:
+            input_attrs['class'] += ' for_jsoneditor'
         r = super(JSONEditor,self).render(name, value, input_attrs)
         div_attrs = {}
         div_attrs.update(attrs)
@@ -20,27 +27,7 @@ class JSONEditor(Textarea):
         final_attrs = self.build_attrs(div_attrs, name=name)
         r += '''
         <div %(attrs)s></div>
-        <script type="text/javascript">
-        django.jQuery(function() {
-            if( typeof(jsoneditor) == "undefined" )
-                jsoneditor = { JSONEditor:JSONEditor };
-            var value;
-            try {
-                value = JSON.parse(django.jQuery('#%(id)s')[0].value);
-            } catch(e) {
-                // ignore
-            }
-            var editor_%(editor_id)s = new jsoneditor.JSONEditor(django.jQuery('#%(id)s_jsoneditor')[0],{
-                    change:function() {
-                        django.jQuery('#%(id)s')[0].value = JSON.stringify(editor_%(editor_id)s.get());
-                    },
-                },value);
-            django.jQuery('#%(id)s').hide();
-        });
-        </script>
         ''' % {
             'attrs':flatatt(final_attrs),
-            'editor_id':attrs['id'].replace('-','_'),
-            'id':attrs['id'],
         }
         return mark_safe(r)
