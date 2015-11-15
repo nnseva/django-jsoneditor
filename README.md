@@ -6,6 +6,12 @@ Code of the javascript JSONEditor online editor has been got from the http://jso
 
 See the latest versions of the javascript online JSON Editor here: https://github.com/josdejong/jsoneditor
 
+Sample views:
+
+<img alt="json editor" src="https://raw.github.com/josdejong/jsoneditor/master/misc/jsoneditor.png">
+
+<img alt="code editor" src="https://raw.github.com/josdejong/jsoneditor/master/misc/codeeditor.png">
+
 *Don't mismatch this repo with https://github.com/bradjasper/django-jsonfield*
 
 ## Installation
