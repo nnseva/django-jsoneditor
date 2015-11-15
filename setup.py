@@ -20,7 +20,7 @@ setup(
     url = URL,
     long_description = long_description,
     packages = ['jsoneditor','jsoneditor.fields'],
-    package_data = {'jsoneditor':['static/jsoneditor/*.js','static/jsoneditor/*.css','static/jsoneditor/img/*']},
+    package_data = {'jsoneditor':['static/jsoneditor/*.js','static/jsoneditor/*.css','static/jsoneditor/img/*','static/django-jsoneditor/*.js']},
     include_package_data = True,
     zip_safe = False,
 )
