@@ -10,8 +10,6 @@ Sample views:
 
 <img alt="json editor" src="https://raw.github.com/josdejong/jsoneditor/master/misc/jsoneditor.png">
 
-<img alt="code editor" src="https://raw.github.com/josdejong/jsoneditor/master/misc/codeeditor.png">
-
 *Don't mismatch this repo with https://github.com/bradjasper/django-jsonfield*
 
 ## Installation
