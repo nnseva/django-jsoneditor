@@ -24,11 +24,17 @@ class JSONEditor(Textarea):
         django.jQuery(function() {
             if( typeof(jsoneditor) == "undefined" )
                 jsoneditor = { JSONEditor:JSONEditor };
+            var value;
+            try {
+                value = JSON.parse(django.jQuery('#%(id)s')[0].value);
+            } catch(e) {
+                // ignore
+            }
             var editor_%(editor_id)s = new jsoneditor.JSONEditor(django.jQuery('#%(id)s_jsoneditor')[0],{
                     change:function() {
                         django.jQuery('#%(id)s')[0].value = JSON.stringify(editor_%(editor_id)s.get());
                     },
-                },JSON.parse(django.jQuery('#%(id)s')[0].value));
+                },value);
             django.jQuery('#%(id)s').hide();
         });
         </script>
