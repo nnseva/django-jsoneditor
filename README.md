@@ -20,7 +20,7 @@ Note that you should use one of original JSONField packages to provide the JSONF
 
 ## Configuration
 
-Append jsoneditor into your `settings.py` file:
+Append `jsoneditor` into the `INSTALLED_APPS` of your `settings.py` file:
 ```python
 INSTALLED_APPS = (
     ...
@@ -29,7 +29,7 @@ INSTALLED_APPS = (
 )
 ```
 
-You can use CDN repositories to get JSONEditor javascript code, or host it yourself using the following two settings in your `settings.py` file:
+You can use CDN repositories to get JSONEditor javascript code, or host it yourself, instead of the packaged one using the following two settings in your `settings.py` file:
 ```python
 JSON_EDITOR_JS = 'whatever-your-want.js'
 JSON_EDITOR_CSS = 'whatever-your-want.css'
