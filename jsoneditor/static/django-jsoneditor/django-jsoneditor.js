@@ -11,7 +11,7 @@ django.jQuery(function() {
             if($nxt.attr("name") == name) {
                 continue;
             }
-            var value;
+            var value = {};
             try {
                 value = JSON.parse($f[0].value);
             } catch(e) {

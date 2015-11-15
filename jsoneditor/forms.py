@@ -5,15 +5,19 @@ from django.utils.safestring import mark_safe
 
 from django.conf import settings
 
+import json
+
 class JSONEditor(Textarea):
     class Media:
         js = (
             getattr(settings,"JSON_EDITOR_JS",settings.STATIC_URL+'jsoneditor/jsoneditor.js'),
-            getattr(settings,"JSON_EDITOR_JS",settings.STATIC_URL+'django-jsoneditor/django-jsoneditor.js'),
+            settings.STATIC_URL+'django-jsoneditor/django-jsoneditor.js',
         )
         css= {'all': ( getattr(settings, "JSON_EDITOR_CSS",settings.STATIC_URL+'jsoneditor/jsoneditor.css'),)}
 
     def render(self, name, value, attrs=None):
+        if not isinstance(value,basestring):
+           value = json.dumps(value)
         input_attrs = {'hidden':True}
         input_attrs.update(attrs)
         if not 'class' in input_attrs:
