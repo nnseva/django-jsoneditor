@@ -6,7 +6,7 @@ import jsoneditor
 
 from setuptools import setup, find_packages
 
-description = 'Django JSON editor'
+description = 'Django JSON Editor'
 
 with open('README.md') as f:
     long_description = f.read()
@@ -19,6 +19,8 @@ setup(
     author_email = AUTHOR_EMAIL,
     url = URL,
     long_description = long_description,
-    packages = ['jsoneditor'],
+    packages = ['jsoneditor','jsoneditor.fields'],
+    package_data = {'jsoneditor':['static/jsoneditor/*.js','static/jsoneditor/*.css','static/jsoneditor/img/*']},
     include_package_data = True,
+    zip_safe = False,
 )
