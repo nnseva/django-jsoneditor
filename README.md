@@ -14,7 +14,13 @@ Sample views:
 
 ## Installation
 
+### Latest version from the GIT repository::
+
     pip install "git+git://github.com/nnseva/django-jsoneditor.git"
+
+### Stable version from the PyPi repository::
+
+    pip install django-jsoneditor
 
 Note that you should use one of original JSONField packages to provide the JSONField itself.
 
