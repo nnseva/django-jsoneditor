@@ -58,3 +58,6 @@ target/
 
 # Database
 *.sqlite3
+
+# IntelliJ
+*.idea
