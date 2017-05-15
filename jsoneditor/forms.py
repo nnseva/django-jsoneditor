@@ -1,3 +1,6 @@
+from packaging import version
+import django
+
 from django.forms.widgets import Textarea
 try:
     from django.forms.util import flatatt
@@ -47,7 +50,10 @@ class JSONEditor(Textarea):
         div_attrs = {}
         div_attrs.update(attrs)
         div_attrs.update({'id':(attrs['id']+'_jsoneditor')})
-        final_attrs = self.build_attrs(div_attrs, name=name)
+        if version.parse(django.__version__) > version.parse("1.11"):
+            final_attrs = self.build_attrs(div_attrs, extra_attrs={'name':name})
+        else:
+            final_attrs = self.build_attrs(div_attrs, name=name)
         r += '''
         <div %(attrs)s></div>
         ''' % {
