@@ -25,7 +25,9 @@ SECRET_KEY = '1@5n@*f2ng(+il*9im)f$ie8lpc)c3an!3-3z2f9cwn*=6pzvc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'django-jsoneditor-nnseva.c9users.io'
+]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
