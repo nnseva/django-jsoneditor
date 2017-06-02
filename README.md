@@ -63,10 +63,12 @@ class MyAdmin(admin.ModelAdmin):
 
 Or use the original JSONField implementation fixed by the package.
 
-Right now there are two fixed implementations:
+Right now there are three fixed implementations:
 
-* `jsoneditor.fields.django_json_field.JSONField` replaces a JSONField from https://github.com/derek-schaefer/django-json-field (**NOTE** the package is not compatible with django v.1.9)
-* `jsoneditor.fields.django_jsonfield.JSONField` replaces a JSONField from https://github.com/bradjasper/django-jsonfield
+* `jsoneditor.fields.django_json_field.JSONField` replaces a `JSONField` from https://github.com/derek-schaefer/django-json-field (**NOTE** the package is not compatible with django v.1.9)
+* `jsoneditor.fields.django_jsonfield.JSONField` replaces a `JSONField` from https://github.com/bradjasper/django-jsonfield
+* `jsoneditor.fields.postgres_jsonfield.JSONField` replaces `django.contrib.postgres.fields.JSONField` (**NOTE** this field type appears only from django v.1.9)
+
 
 Use the fixed implementation instead of the original one
 
