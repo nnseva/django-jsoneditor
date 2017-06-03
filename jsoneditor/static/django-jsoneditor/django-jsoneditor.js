@@ -20,7 +20,7 @@ django.jQuery(function () {
                 // ignore
             }
             $nxt.detach();
-            $nxt = django.jQuery('<div cols="40" rows="10" id="' + id + '" name="' + name + '"></div>');
+            $nxt = django.jQuery('<div cols="40" rows="10" id="' + id + '" name="' + name + '"  style="minheight:220px;"></div>');
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
                 var editor = new jsoneditor.JSONEditor(nxt, {

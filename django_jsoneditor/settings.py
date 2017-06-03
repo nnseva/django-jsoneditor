@@ -1,1 +1,1 @@
-settings_testapp2.py
+settings_testapp1.py
