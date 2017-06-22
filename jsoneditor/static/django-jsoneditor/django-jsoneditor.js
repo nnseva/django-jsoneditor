@@ -20,14 +20,14 @@ django.jQuery(function () {
                 // ignore
             }
             $nxt.detach();
-            $nxt = django.jQuery('<div cols="40" rows="10" id="' + id + '" name="' + name + '"  style="minheight:220px;"></div>');
+            $nxt = django.jQuery('<div cols="40" rows="10" id="' + id + '" name="' + name + '"></div>');
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
                 var editor = new jsoneditor.JSONEditor(nxt, {
                     change: function () {
                         f.value = JSON.stringify(editor.get());
                     },
-                    modes: ['tree','code']
+                    // modes: ['tree','code'] // is not working properly
                 }, value);
 
                 return editor;
