@@ -50,7 +50,7 @@ class JSONEditor(Textarea):
         div_attrs = {}
         div_attrs.update(attrs)
         div_attrs.update({'id':(attrs['id']+'_jsoneditor')})
-        if version.parse(django.get_version()) > version.parse("1.11"):
+        if version.parse(django.get_version()) >= version.parse("1.11"):
             final_attrs = self.build_attrs(div_attrs, extra_attrs={'name':name})
         else:
             final_attrs = self.build_attrs(div_attrs, name=name)
