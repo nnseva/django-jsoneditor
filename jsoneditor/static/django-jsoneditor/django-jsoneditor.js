@@ -27,7 +27,7 @@ django.jQuery(function () {
                     change: function () {
                         f.value = JSON.stringify(editor.get());
                     },
-                    // modes: ['tree','code'] // is not working properly
+                    modes: ['tree','code'] // Works with jsoneditor latest version
                 }, value);
 
                 return editor;
