@@ -9,9 +9,9 @@ class TestModel(models.Model):
     test_django_jsonfield = JSONField2(verbose_name="Test JSON 2",null=True,blank=True,help_text="Test JSON editor for the django-jsonfield from https://github.com/bradjasper/django-jsonfield")
 
 class TestSubModel1(models.Model):
-    par = models.ForeignKey(TestModel)
+    par = models.ForeignKey(TestModel, on_delete=models.CASCADE)
     test_inline_json_field = JSONField2(verbose_name="Test JSON 2",null=True,blank=True,help_text="Test JSON editor for the django-jsonfield from https://github.com/bradjasper/django-jsonfield")
 
 class TestSubModel2(models.Model):
-    par = models.ForeignKey(TestModel)
+    par = models.ForeignKey(TestModel, on_delete=models.CASCADE)
     test_inline_json_field = JSONField2(verbose_name="Test JSON 2",null=True,blank=True,help_text="Test JSON editor for the django-jsonfield from https://github.com/bradjasper/django-jsonfield")

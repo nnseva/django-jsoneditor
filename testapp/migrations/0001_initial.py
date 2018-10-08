@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('test_inline_json_field', jsoneditor.fields.django_jsonfield.JSONField(default='null', help_text=b'Test JSON editor for the django-json-field from https://github.com/derek-schaefer/django-json-field', null=True, verbose_name=b'Test JSON 1', blank=True)),
-                ('par', models.ForeignKey(to='testapp.TestModel')),
+                ('par', models.ForeignKey(to='testapp.TestModel', on_delete=models.CASCADE)),
             ],
         ),
         migrations.CreateModel(
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('test_inline_json_field', jsoneditor.fields.django_jsonfield.JSONField(default='null', help_text=b'Test JSON editor for the django-json-field from https://github.com/derek-schaefer/django-json-field', null=True, verbose_name=b'Test JSON 1', blank=True)),
-                ('par', models.ForeignKey(to='testapp.TestModel')),
+                ('par', models.ForeignKey(to='testapp.TestModel', on_delete=models.CASCADE)),
             ],
         ),
     ]

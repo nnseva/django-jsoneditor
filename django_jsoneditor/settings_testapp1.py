@@ -26,7 +26,8 @@ SECRET_KEY = '1@5n@*f2ng(+il*9im)f$ie8lpc)c3an!3-3z2f9cwn*=6pzvc'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'django-jsoneditor-nnseva.c9users.io'
+    'django-jsoneditor-nnseva.c9users.io',
+    '127.0.0.1',
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -55,6 +56,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+)
+
+MIDDLEWARE = (
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'django_jsoneditor.urls'
