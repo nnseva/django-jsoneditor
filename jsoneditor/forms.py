@@ -2,7 +2,6 @@ import json
 from packaging import version
 
 import django
-from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.conf import settings
 from django.forms.widgets import Textarea
 from django.utils.safestring import mark_safe
@@ -32,12 +31,12 @@ else:
 class JSONEditor(Textarea):
     class Media:
         js = (
-            static('admin/js/vendor/jquery/jquery.js'),
-            static('admin/js/jquery.init.js'),
-            getattr(settings, "JSON_EDITOR_JS", static('jsoneditor/jsoneditor.js')),
-            static('django-jsoneditor/django-jsoneditor.js'),
+            'admin/js/vendor/jquery/jquery.js',
+            'admin/js/jquery.init.js',
+            getattr(settings, "JSON_EDITOR_JS", 'jsoneditor/jsoneditor.js'),
+            'django-jsoneditor/django-jsoneditor.js',
         )
-        css = {'all': (getattr(settings, "JSON_EDITOR_CSS", settings.STATIC_URL + 'jsoneditor/jsoneditor.css'),)}
+        css = {'all': (getattr(settings, "JSON_EDITOR_CSS", 'jsoneditor/jsoneditor.css'),)}
 
 
     def render(self, name, value, attrs=None, renderer=None):
