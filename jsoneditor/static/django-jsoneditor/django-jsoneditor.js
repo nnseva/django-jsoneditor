@@ -23,13 +23,11 @@ django.jQuery(function () {
             $nxt = django.jQuery('<div cols="40" rows="10" id="' + id + '" name="' + name + '"></div>');
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
-                var editor = new jsoneditor.JSONEditor(nxt, {
+                var editor = new jsoneditor.JSONEditor(nxt, Object.assign({
                     change: function () {
                         f.value = JSON.stringify(editor.get());
                     },
-                    mode: 'tree',
-                    modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
-                }, value);
+                }, django_jsoneditor_init), value);
 
                 return editor;
             };

@@ -2,7 +2,7 @@
 
 Django-JSONEditor is an online structured JSON input widget for Django appropriate for various JSONField's provided for Django.
 
-Code of the javascript JSONEditor online editor has been got from the http://jsoneditoronline.org/ but slightly changed to avoid some issues.
+Code of the javascript JSONEditor online editor has been got from the http://jsoneditoronline.org/.
 
 See the latest versions of the javascript online JSON Editor here: https://github.com/josdejong/jsoneditor
 
@@ -41,11 +41,43 @@ JSON_EDITOR_JS = 'whatever-your-want.js'
 JSON_EDITOR_CSS = 'whatever-your-want.css'
 ```
 
-Just look to the http://cdnjs.com/libraries/jsoneditor and select the latest one, like:
+Just look to the http://cdnjs.com/libraries/jsoneditor and select the preferred one, like:
 ```python
 JSON_EDITOR_JS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoneditor.js'
 JSON_EDITOR_CSS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoneditor.css'
 ```
+
+You **can** change initial parameters for the `jsoneditor.JSONEditor`
+*javascript* constructor initial call for your own purposes using
+`JSON_EDITOR_INIT_JS` settings. Copy the `jsoneditor/static/django-jsoneditor/init.js`
+file to your own static storage, change initial values of the
+`django_jsoneditor_init` object and setup the `JSON_EDITOR_INIT_JS`
+variable of the `settings` file to point your own modified copy of the
+file.
+
+**Note** that the django original static file subsystem is used to
+refer to the init file.
+
+For example, let's your project has a `myapp` application,
+and you would like to init all available modes of the JSONEditor
+instead of two allowed by default.
+
+* copy the `jsoneditor/static/django-jsoneditor/init.js` to `myapp/static/jsoneditor-init.js` file
+* change content of the `myapp/static/jsoneditor-init.js` to:
+```javascript
+django_jsoneditor_init = {
+    mode: 'tree',
+    modes: ['code', 'form', 'text', 'tree', 'view'] // all modes
+}
+```
+* insert into your `settings.py` file the following code:
+```python
+JSON_EDITOR_INIT_JS = "jsoneditor-init.js"
+```
+(**note** that the static file subsystem refers to static files without `static` prefix)
+
+Also you can extend the `JSON_EDITOR_INIT_JS` file as you wish, it will be used on every
+page where the `JSONEditor` widget is used just before the `django-jsonfield.js` file.
 
 ## Use
 
