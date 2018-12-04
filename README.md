@@ -95,14 +95,15 @@ class MyAdmin(admin.ModelAdmin):
 
 Or use the original JSONField implementation fixed by the package.
 
-Right now there are three fixed implementations:
+Right now there are the following fixed implementations:
 
 * `jsoneditor.fields.django_json_field.JSONField` replaces a `JSONField` from https://github.com/derek-schaefer/django-json-field (**NOTE** the package is not compatible with django v.1.9)
 * `jsoneditor.fields.django_jsonfield.JSONField` replaces a `JSONField` from (different) packages https://github.com/bradjasper/django-jsonfield and https://launchpad.net/django-jsonfield
 * `jsoneditor.fields.postgres_jsonfield.JSONField` replaces `django.contrib.postgres.fields.JSONField` (**NOTE** this field type appears only from django v.1.9)
+* `jsoneditor.fields.django_extensions_jsonfield.JSONField` replaces `django_extensions.db.fields.json.JSONField`
 
 
-Use the fixed implementation instead of the original one
+Use the fixed implementation instead of the original one like
 
 models.py:
 ```python
@@ -127,4 +128,3 @@ I'm collecting small bounties to integrate django-jsoneditor with different JSON
 [![Bountysource](https://api.bountysource.com/badge/issue?issue_id=28268324)](https://www.bountysource.com/issues/28268324-integrate-jsoneditor-with-django-suit-https-github-com-darklow-django-suit?utm_source=28268324&utm_medium=shield&utm_campaign=ISSUE_BADGE) - Django Suit integration
 
 [![Bountysource](https://api.bountysource.com/badge/issue?issue_id=28268367)](https://www.bountysource.com/issues/28268367-integrate-jsoneditor-with-django-grappelli-https-github-com-sehmaschine-django-grappelli?utm_source=28268367&utm_medium=shield&utm_campaign=ISSUE_BADGE) - Django Grappelli integration
-
