@@ -29,6 +29,7 @@ setup(
             'static/jsoneditor/*.css',
             'static/jsoneditor/img/*',
             'static/django-jsoneditor/*.js',
+            'static/django-jsoneditor/*.css',
         ]
     },
     include_package_data = True,

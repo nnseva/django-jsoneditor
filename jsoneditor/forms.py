@@ -37,7 +37,12 @@ class JSONEditor(Textarea):
             getattr(settings, "JSON_EDITOR_INIT_JS", 'django-jsoneditor/init.js'),
             'django-jsoneditor/django-jsoneditor.js',
         )
-        css = {'all': (getattr(settings, "JSON_EDITOR_CSS", 'jsoneditor/jsoneditor.css'),)}
+        css = {
+            'all': (
+                getattr(settings, "JSON_EDITOR_CSS", 'jsoneditor/jsoneditor.css'),
+                'django-jsoneditor/django-jsoneditor.css',
+            )
+        }
 
 
     def render(self, name, value, attrs=None, renderer=None):

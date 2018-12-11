@@ -7,7 +7,7 @@ from jsoneditor.fields.django_extensions_jsonfield import JSONField as JSONField
 
 class TestModel(models.Model):
 #    test_django_json_field = JSONField1(verbose_name="Test JSON 1",null=True,blank=True,help_text="Test JSON editor for the django-json-field from https://github.com/derek-schaefer/django-json-field")
-    test_django_jsonfield = JSONField2(verbose_name="Test JSON 2",null=True,blank=True,help_text="Test JSON editor for the django-jsonfield from https://github.com/bradjasper/django-jsonfield")
+    test_django_jsonfield = JSONField2()
 
 class TestSubModel1(models.Model):
     par = models.ForeignKey(TestModel, on_delete=models.CASCADE)
