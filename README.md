@@ -47,6 +47,7 @@ JSON_EDITOR_JS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoned
 JSON_EDITOR_CSS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoneditor.css'
 ```
 
+### Custom JSONEditor initialization
 You **can** change initial parameters for the `jsoneditor.JSONEditor`
 *javascript* constructor initial call for your own purposes using
 `JSON_EDITOR_INIT_JS` settings. Copy the `jsoneditor/static/django-jsoneditor/init.js`
@@ -78,6 +79,17 @@ JSON_EDITOR_INIT_JS = "jsoneditor-init.js"
 
 Also you can extend the `JSON_EDITOR_INIT_JS` file as you wish, it will be used on every
 page where the `JSONEditor` widget is used just before the `django-jsonfield.js` file.
+
+### Custom Ace initialization
+In the same fashion, you can also set options for the Ace editor that is initialized when either
+starting with or switching to 'code' mode. These options can be found here:
+https://github.com/ajaxorg/ace/wiki/Configuring-Ace. This can for example come in handy when
+wanting to customize for example the height or looks of the editor. The default of this file can be
+found in `jsoneditor/static/django-jsoneditor/ace_options.js`, which is empty. A custom one can be
+pointed to by adding the following line to your `settings.py`:
+ ```python
+JSON_EDITOR_ACE_OPTIONS_JS = "[your_ace_options_file].js"
+```
 
 ## Use
 

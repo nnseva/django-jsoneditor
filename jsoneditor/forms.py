@@ -34,6 +34,7 @@ class JSONEditor(Textarea):
             'admin/js/vendor/jquery/jquery.js',
             'admin/js/jquery.init.js',
             getattr(settings, "JSON_EDITOR_JS", 'jsoneditor/jsoneditor.js'),
+            getattr(settings, "JSON_EDITOR_ACE_OPTIONS_JS", 'django-jsoneditor/ace_options.js'),
             getattr(settings, "JSON_EDITOR_INIT_JS", 'django-jsoneditor/init.js'),
             'django-jsoneditor/django-jsoneditor.js',
         )

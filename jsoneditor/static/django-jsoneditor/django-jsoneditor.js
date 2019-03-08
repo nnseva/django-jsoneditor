@@ -24,10 +24,21 @@ django.jQuery(function () {
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
                 var editor = new jsoneditor.JSONEditor(nxt, Object.assign({
-                    change: function () {
+                    onChange: function () {
                         f.value = JSON.stringify(editor.get());
                     },
+                    // If switching to code mode, properly initialize with ace options
+                    onModeChange: function(endMode, startMode) {
+                        if (endMode == 'code') {
+                            editor.aceEditor.setOptions(django_jsoneditor_ace_options);
+                        }
+                    }
                 }, django_jsoneditor_init), value);
+
+                // If initialized in code mode, set ace options right away
+                if (editor.mode == 'code') {
+                    editor.aceEditor.setOptions(django_jsoneditor_ace_options);
+                }
 
                 return editor;
             };
