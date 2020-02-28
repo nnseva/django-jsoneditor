@@ -14,18 +14,13 @@ django.jQuery(function () {
                 continue;
             }
             var value = {};
-            try {
-                value = JSON.parse($f[0].value);
-            } catch (e) {
-                // ignore
-            }
             $nxt.detach();
             $nxt = django.jQuery('<div class="outer_jsoneditor" cols="40" rows="10" id="' + id + '" name="' + name + '"></div>');
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
                 var editor = new jsoneditor.JSONEditor(nxt, Object.assign({
                     onChange: function () {
-                        f.value = JSON.stringify(editor.get());
+                        f.value = editor.getText();
                     },
                     // If switching to code mode, properly initialize with ace options
                     onModeChange: function(endMode, startMode) {
@@ -34,6 +29,10 @@ django.jQuery(function () {
                         }
                     }
                 }, django_jsoneditor_init), value);
+
+                // Initialise contents of form even on unparseable JSON on load.
+
+                // editor.setText = $f[0].value
 
                 // If initialized in code mode, set ace options right away
                 if (editor.mode == 'code') {
