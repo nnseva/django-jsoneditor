@@ -31,15 +31,16 @@ django.jQuery(function () {
                     }
                 }, django_jsoneditor_init));
 
-                // Force editor mode to "code" if there are JSON parse errors.
+                // Load the editor.
                 try {
-                    JSON.parse(value);
+                    editor.set(JSON.parse(value));
                 } catch (e) {
+                    // Force editor mode to "code" if there are JSON parse errors.
                     editor.setMode('code');
-                }
 
-                // Initialise contents of form even on unparseable JSON on load
-                editor.setText(value);
+                    // Initialise contents of form even on unparseable JSON on load
+                    editor.setText(value);
+                }
 
                 // If initialized in code mode, set ace options right away
                 if (editor.mode == 'code') {
