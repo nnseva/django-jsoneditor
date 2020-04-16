@@ -43,8 +43,8 @@ JSON_EDITOR_CSS = 'whatever-your-want.css'
 
 Just look to the http://cdnjs.com/libraries/jsoneditor and select the preferred one, like:
 ```python
-JSON_EDITOR_JS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoneditor.js'
-JSON_EDITOR_CSS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/4.2.1/jsoneditor.css'
+JSON_EDITOR_JS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/8.6.4/jsoneditor.js'
+JSON_EDITOR_CSS = 'https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/8.6.4/jsoneditor.css'
 ```
 
 ### Custom JSONEditor initialization
