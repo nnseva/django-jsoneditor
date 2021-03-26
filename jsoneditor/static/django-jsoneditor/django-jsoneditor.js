@@ -14,6 +14,7 @@ django.jQuery(function () {
                 continue;
             }
             var value = $f[0].value;
+            var disabled = $f.is(':disabled');
 
             $nxt.detach();
             $nxt = django.jQuery('<div class="outer_jsoneditor" cols="40" rows="10" id="' + id + '" name="' + name + '"></div>');
@@ -28,6 +29,9 @@ django.jQuery(function () {
                         if (endMode == 'code') {
                             editor.aceEditor.setOptions(django_jsoneditor_ace_options);
                         }
+                    },
+                    onEditable: function() {
+                        return !disabled;
                     }
                 }, django_jsoneditor_init));
 
