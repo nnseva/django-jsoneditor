@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import jsoneditor.fields.postgres_jsonfield
+import jsoneditor.fields.django3_jsonfield
 
 
 class Migration(migrations.Migration):
@@ -19,14 +19,14 @@ class Migration(migrations.Migration):
             name='TestModel',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('test_django_jsonfield', jsoneditor.fields.postgres_jsonfield.JSONField(blank=True, help_text=b'Test JSON editor for the django postgres-specific JSONField', null=True, verbose_name=b'Test JSON')),
+                ('test_django_jsonfield', jsoneditor.fields.django3_jsonfield.JSONField(blank=True, help_text=b'Test JSON editor for the django postgres-specific JSONField', null=True, verbose_name=b'Test JSON')),
             ],
         ),
         migrations.CreateModel(
             name='TestSubModel1',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('test_inline_json_field', jsoneditor.fields.postgres_jsonfield.JSONField(blank=True, help_text=b'Test JSON editor for the django postgres-specific JSONField', null=True, verbose_name=b'Test JSON')),
+                ('test_inline_json_field', jsoneditor.fields.django3_jsonfield.JSONField(blank=True, help_text=b'Test JSON editor for the django postgres-specific JSONField', null=True, verbose_name=b'Test JSON')),
                 ('par', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='testapp2.TestModel')),
             ],
         ),
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
             name='TestSubModel2',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('test_inline_json_field', jsoneditor.fields.postgres_jsonfield.JSONField(blank=True, help_text=b'Test JSON editor for the django postgres-specific JSONField', null=True, verbose_name=b'Test JSON')),
+                ('test_inline_json_field', jsoneditor.fields.django3_jsonfield.JSONField(blank=True, help_text=b'Test JSON editor for the django postgres-specific JSONField', null=True, verbose_name=b'Test JSON')),
                 ('par', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='testapp2.TestModel')),
             ],
         ),
