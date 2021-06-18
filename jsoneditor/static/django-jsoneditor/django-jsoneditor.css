@@ -4,7 +4,3 @@ div .outer_jsoneditor {
     resize: both;
     overflow: auto;
 }
-
-.form-row {
-    overflow: visible;
-}
