@@ -110,10 +110,10 @@ Or use the original JSONField implementation fixed by the package.
 Right now there are the following fixed implementations:
 
 * `jsoneditor.fields.django_json_field.JSONField` replaces a `JSONField` from https://github.com/derek-schaefer/django-json-field (**NOTE** the package is not compatible with django v.1.9)
-* `jsoneditor.fields.django_jsonfield.JSONField` replaces a `JSONField` from (different) packages https://github.com/bradjasper/django-jsonfield and https://launchpad.net/django-jsonfield
+* `jsoneditor.fields.django_jsonfield.JSONField` replaces a `JSONField` from https://launchpad.net/django-jsonfield package
 * `jsoneditor.fields.postgres_jsonfield.JSONField` replaces `django.contrib.postgres.fields.JSONField` (**NOTE** this field type appears only from django v.1.9)
 * `jsoneditor.fields.django_extensions_jsonfield.JSONField` replaces `django_extensions.db.fields.json.JSONField`
-* `jsoneditor.fields.jsonfield` is now added for people using https://github.com/rpkilby/jsonfield
+* `jsoneditor.fields.jsonfield` has been added for people using https://github.com/rpkilby/jsonfield (the https://github.com/bradjasper/django-jsonfield now redirects there)
 * `jsoneditor.fields.django3_jsonfield` uses the standard JSONField and JSONFormField provided by Django 3+
 
 To use the fixed implementation instead of the original one, just replace your import with the desired one. For example, for Django 3.0 and above:
