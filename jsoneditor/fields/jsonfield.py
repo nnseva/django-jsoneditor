@@ -1,5 +1,5 @@
 from jsonfield import JSONField as _JSONField
-from jsonfield.fields import JSONCharField as _JSONFormField
+from jsonfield.forms import JSONField as _JSONFormField
 
 from jsoneditor.forms import JSONEditor
 

@@ -2,7 +2,7 @@ from django.db import models
 
 #from jsoneditor.fields.django_json_field import JSONField as JSONField1
 #from jsoneditor.fields.django_jsonfield import JSONField as JSONField2
-from jsoneditor.fields.django_extensions_jsonfield import JSONField as JSONField2
+from jsoneditor.fields.jsonfield import JSONField as JSONField2
 # Create your models here.
 
 class TestModel(models.Model):
