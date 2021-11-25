@@ -15,11 +15,15 @@ django.jQuery(function () {
             }
             var value = $f[0].value;
             var disabled = $f.is(':disabled');
+            var jsonschema = JSON.parse($f.attr("jsonschema"));
 
             $nxt.detach();
             $nxt = django.jQuery('<div class="outer_jsoneditor" cols="40" rows="10" id="' + id + '" name="' + name + '"></div>');
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
+                if (jsonschema != null) {
+                    django_jsoneditor_init['schema'] = jsonschema;
+                }
                 var editor = new jsoneditor.JSONEditor(nxt, Object.assign({
                     onChange: function () {
                         f.value = editor.getText();
