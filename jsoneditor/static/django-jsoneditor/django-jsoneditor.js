@@ -21,9 +21,9 @@ django.jQuery(function () {
             $nxt = django.jQuery('<div class="outer_jsoneditor" cols="40" rows="10" id="' + id + '" name="' + name + '"></div>');
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
-                if (jsonschema != null) {
-                    django_jsoneditor_init['schema'] = jsonschema;
-                }
+                var initOptions = Object.assign({}, django_jsoneditor_init);
+                initOptions['schema'] = jsonschema;
+
                 var editor = new jsoneditor.JSONEditor(nxt, Object.assign({
                     onChange: function () {
                         f.value = editor.getText();
@@ -37,7 +37,7 @@ django.jQuery(function () {
                     onEditable: function() {
                         return !disabled;
                     }
-                }, django_jsoneditor_init));
+                }, initOptions));
 
                 // Load the editor.
                 try {
