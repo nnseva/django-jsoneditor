@@ -3,4 +3,5 @@ div .outer_jsoneditor {
     width: 100%;
     resize: both;
     overflow: auto;
+    max-width: 100%;
 }
