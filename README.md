@@ -156,6 +156,20 @@ class MyAdmin(admin.ModelAdmin):
 
 ```
 
+## Custom Style
+
+You can pass the style in attrs params for `JSONEditor` widget so that
+jsoneditor render with the style what you setup. Example:
+
+``` python
+from json_field import JSONField
+from jsoneditor.forms import JSONEditor
+
+class MyAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        JSONField: {'widget': JSONEditor(attrs={'style': 'width: 620px;'})}
+    }
+```
 
 ## Collecting bounties
 
