@@ -11,8 +11,6 @@ Sample views:
 
 .. image:: https://raw.github.com/josdejong/jsoneditor/master/misc/jsoneditor.png
 
-*Don't mismatch this project with* https://github.com/skyhood/django-jsoneditor
-
 Installation
 ------------
 Latest version from the GIT repository::

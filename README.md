@@ -10,8 +10,6 @@ Sample views:
 
 <img alt="json editor" src="https://raw.github.com/josdejong/jsoneditor/master/misc/jsoneditor.png">
 
-*Don't mismatch this repo with https://github.com/skyhood/django-jsoneditor*
-
 ## Installation
 
 ### Latest version from the GIT repository::
@@ -29,9 +27,9 @@ Note that you should use one of original JSONField packages to provide the JSONF
 You **should** append `jsoneditor` into the `INSTALLED_APPS` of your `settings.py` file:
 ```python
 INSTALLED_APPS = (
-    ...
+    # ...
     'jsoneditor',
-    ...
+    # ...
 )
 ```
 
@@ -59,7 +57,7 @@ file.
 **Note** that the django original static file subsystem is used to
 refer to the init file.
 
-For example, let's your project has a `myapp` application,
+For example, let's say your project has a `myapp` application,
 and you would like to init all available modes of the JSONEditor
 instead of two allowed by default.
 
@@ -77,7 +75,7 @@ JSON_EDITOR_INIT_JS = "jsoneditor-init.js"
 ```
 (**note** that the static file subsystem refers to static files without `static` prefix)
 
-Also you can extend the `JSON_EDITOR_INIT_JS` file as you wish, it will be used on every
+You can extend the `JSON_EDITOR_INIT_JS` file as you wish; it will be used on every
 page where the `JSONEditor` widget is used just before the `django-jsonfield.js` file.
 
 ### Custom Ace initialization
@@ -91,6 +89,42 @@ pointed to by adding the following line to your `settings.py`:
 JSON_EDITOR_ACE_OPTIONS_JS = "[your_ace_options_file].js"
 ```
 
+### Per-field customization
+You can also override JSONEditor and Ace initialization on a per-field basis. To do this, create a
+javascript file with an object named `django_jsoneditor_init_override` and/or
+`django_jsoneditor_ace_options_override`, and create a subclass of `JSONEditor`. For example, let's
+say you want to make a certain field read-only.
+
+* create a file `myapp/static/jsoneditor-init-readonly.js` 
+
+```javascript
+django_jsoneditor_init_override = {
+    mode: 'view',
+    modes: ['view', 'code']
+}
+
+django_jsoneditor_ace_options_override = {
+    readOnly: true
+}
+```
+
+* Subclass `JSONEditor` and use your custom class as the field's widget
+
+```python
+from jsoneditor.forms import JSONEditor
+
+
+class ViewOnlyJSONEditor(JSONEditor):
+    class Media:
+        js = ('jsoneditor-init-viewonly.js',)
+
+
+class MyAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        JSONField: {'widget': ViewOnlyJSONEditor},
+    }
+```
+
 ## Use
 
 You can use the JSONEditor widget for fields in selected Admin classes like:
@@ -99,9 +133,11 @@ admin.py:
 ```python
 from json_field import JSONField
 from jsoneditor.forms import JSONEditor
+
+
 class MyAdmin(admin.ModelAdmin):
     formfield_overrides = {
-        JSONField:{ 'widget':JSONEditor },
+        JSONField: {'widget': JSONEditor},
     }
 ```
 
