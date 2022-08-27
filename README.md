@@ -113,6 +113,7 @@ class MyAdmin(admin.ModelAdmin):
 
 These values will override any project-level options in the custom javascript files described above.
 
+
 ## Use
 
 You can use the JSONEditor widget for fields in selected Admin classes like:
