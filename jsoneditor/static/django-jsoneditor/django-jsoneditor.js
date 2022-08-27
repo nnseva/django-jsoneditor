@@ -26,7 +26,11 @@ django.jQuery(function () {
             }
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
-                var initOptions = Object.assign({}, django_jsoneditor_init);
+                try {
+                    var initOptions = Object.assign({}, django_jsoneditor_init_override);
+                } catch(error) {
+                    var initOptions = Object.assign({}, django_jsoneditor_init);
+                }
                 initOptions['schema'] = jsonschema;
 
                 var editor = new jsoneditor.JSONEditor(nxt, Object.assign({
@@ -36,7 +40,11 @@ django.jQuery(function () {
                     // If switching to code mode, properly initialize with ace options
                     onModeChange: function(endMode, startMode) {
                         if (endMode == 'code') {
-                            editor.aceEditor.setOptions(django_jsoneditor_ace_options);
+                            try {
+                                editor.aceEditor.setOptions(django_jsoneditor_ace_options_override);
+                            } catch (error) {
+                                editor.aceEditor.setOptions(django_jsoneditor_ace_options);
+                            }
                         }
                     },
                     onEditable: function() {
