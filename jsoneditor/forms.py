@@ -48,13 +48,13 @@ class JSONEditor(Textarea):
 
     def __init__(self, *args, **kwargs):
         self.jsonschema = kwargs.pop('jsonschema', None)
+        self.encoder = kwargs.pop("encoder", None)
         super().__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None, renderer=None):
         attrs['jsonschema'] = json.dumps(self.jsonschema)
-
         if not isinstance(value, basestring):
-            value = json.dumps(value, cls=DjangoJSONEncoder)
+            value = json.dumps(value, cls=self.encoder)
 
         input_attrs = {'hidden': True}
         input_attrs.update(attrs)
