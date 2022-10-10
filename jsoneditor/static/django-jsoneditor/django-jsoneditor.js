@@ -17,6 +17,8 @@ django.jQuery(function () {
             var style = $f.attr("style");
             var disabled = $f.is(':disabled');
             var jsonschema = JSON.parse($f.attr("jsonschema"));
+            var initOverrides = JSON.parse($f.attr("init_options"));
+            var aceOverrides = JSON.parse($f.attr("ace_options"));
 
             $nxt.detach();
             if (style) {
@@ -26,7 +28,7 @@ django.jQuery(function () {
             }
             $f.parent().append($nxt);
             var fnc = function (f, nxt, value) {
-                var initOptions = Object.assign({}, django_jsoneditor_init);
+                var initOptions = Object.assign({}, initOverrides ? initOverrides : django_jsoneditor_init);
                 initOptions['schema'] = jsonschema;
 
                 var editor = new jsoneditor.JSONEditor(nxt, Object.assign({
@@ -36,7 +38,7 @@ django.jQuery(function () {
                     // If switching to code mode, properly initialize with ace options
                     onModeChange: function(endMode, startMode) {
                         if (endMode == 'code') {
-                            editor.aceEditor.setOptions(django_jsoneditor_ace_options);
+                            editor.aceEditor.setOptions(aceOverrides ? aceOverrides : django_jsoneditor_ace_options);
                         }
                     },
                     onEditable: function() {

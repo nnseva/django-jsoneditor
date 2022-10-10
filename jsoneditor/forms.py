@@ -48,11 +48,16 @@ class JSONEditor(Textarea):
 
     def __init__(self, *args, **kwargs):
         self.jsonschema = kwargs.pop('jsonschema', None)
+        self.init_options = kwargs.pop('init_options', None)
+        self.ace_options = kwargs.pop('ace_options', None)
         self.encoder = kwargs.pop("encoder", None)
         super().__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None, renderer=None):
         attrs['jsonschema'] = json.dumps(self.jsonschema)
+        attrs['init_options'] = json.dumps(self.init_options)
+        attrs['ace_options'] = json.dumps(self.ace_options)
+
         if not isinstance(value, basestring):
             value = json.dumps(value, cls=self.encoder)
 
