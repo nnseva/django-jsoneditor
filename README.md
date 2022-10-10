@@ -172,7 +172,7 @@ class MyAdmin(admin.ModelAdmin):
     def formfield_for_dbfield(self, db_field, request, **kwargs):
         field = super().formfield_for_dbfield(db_field, request, **kwargs)
         if isinstance(field, forms.fields.JSONField):
-            field.widget = JSONEditor({
+            field.widget = JSONEditor(jsonschema={
                 "type": "array",
                 "items": {
                     "type": "string"
