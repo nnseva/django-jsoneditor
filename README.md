@@ -170,6 +170,18 @@ class MyAdmin(admin.ModelAdmin):
         JSONField: {'widget': JSONEditor(attrs={'style': 'width: 620px;'})}
     }
 ```
+## Custom Encoders
+
+There are situations where you may prefer to use a custom [JSONEncoder](https://docs.python.org/3/library/json.html#json.JSONEncoder) class. For example, you may want to use Django's [DjangoJSONEncoder](https://docs.djangoproject.com/en/4.1/topics/serialization/#djangojsonencoder) to handle timestamps in a Django-friendly way. You can do this by passing the `encoder` param as an initialization argument.
+
+``` python
+from django.core.serializers.json import DjangoJSONEncoder
+
+class MyAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        JSONField: {'widget': JSONEditor(encoder=DjangoJSONEncoder)} # will now encode/decode python datetime and timestamp objects!
+    }
+```
 
 ## Collecting bounties
 
