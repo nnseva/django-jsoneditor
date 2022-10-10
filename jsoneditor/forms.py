@@ -5,6 +5,7 @@ import django
 from django.conf import settings
 from django.forms.widgets import Textarea
 from django.utils.safestring import mark_safe
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 try:
@@ -49,6 +50,7 @@ class JSONEditor(Textarea):
         self.jsonschema = kwargs.pop('jsonschema', None)
         self.init_options = kwargs.pop('init_options', None)
         self.ace_options = kwargs.pop('ace_options', None)
+        self.encoder = kwargs.pop("encoder", None)
         super().__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None, renderer=None):
@@ -57,7 +59,7 @@ class JSONEditor(Textarea):
         attrs['ace_options'] = json.dumps(self.ace_options)
 
         if not isinstance(value, basestring):
-            value = json.dumps(value)
+            value = json.dumps(value, cls=self.encoder)
 
         input_attrs = {'hidden': True}
         input_attrs.update(attrs)
